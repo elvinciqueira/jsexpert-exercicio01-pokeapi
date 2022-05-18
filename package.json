@@ -4,7 +4,7 @@
   "description": "An API that gives you a random pokemon starter team",
   "main": "src/api.js",
   "scripts": {
-    "start": "node src/api.js"
+    "start": "node src/index.js"
   },
   "keywords": [
     "Tests",
@@ -17,6 +17,6 @@
     "e2e",
     "unit"
   ],
-  "author": "Wellington S. Almeida (WellsSA)",
+  "author": "Elvin Ciqueira",
   "license": "MIT"
 }
