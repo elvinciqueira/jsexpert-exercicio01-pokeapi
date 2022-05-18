@@ -18,5 +18,8 @@
     "unit"
   ],
   "author": "Elvin Ciqueira",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }

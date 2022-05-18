@@ -1,4 +1,5 @@
 const http = require('http');
+const { getAvailableServices } = require('./service');
 
 const DEFAULT_PORT = 3000;
 const DEFAULT_HEADERS = {
@@ -29,11 +30,28 @@ function createRoute(routeKey) {
       response.write(
         "Hey there, try /team so we can present to you your's 3 possibles choices"
       );
+
+      return response.end();
+    },
+    '/team:get': async (request, response) => {
+      const teamService = createService('team');
+      const team = await teamService.getTeam();
+
+      response.write(JSON.stringify({ team }));
+
       return response.end();
     },
   };
 
   return constrollerBy[routeKey] || constrollerBy.default;
+}
+
+function createService(serviceName) {
+  const service = getAvailableServices()[serviceName];
+  if (!service) {
+    throw new Error(`Service "${serviceName}" not found`);
+  }
+  return service;
 }
 
 module.exports = {
