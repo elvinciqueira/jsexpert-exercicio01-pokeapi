@@ -1,14 +1,22 @@
-const { getPokemon, listPokemons } = require('../repository/team');
+const { getPokemonByUrl, getPokemons } = require('../repository/team');
 
-async function getTeam(teamSize = 3) {
-  return listPokemons()
-    .then(getRandomPokemons(teamSize))
-    .then(extractPokemonData);
+async function getTeam(
+  teamSize = 3,
+  getRandomPokemonsModule = getRandomPokemons
+) {
+  const pokemons = await getPokemons();
+  const randomPokemons = getRandomPokemonsModule(pokemons, teamSize);
+
+  return extractPokemonData(randomPokemons);
 }
 
-const getRandomPokemons = (quantity) => (pokemons) => {
-  return [...Array(quantity)].map(() => getRandomItemFromArray(pokemons));
-};
+function getRandomPokemons(
+  list,
+  quantity,
+  getRandomItemFromArrayModule = getRandomItemFromArray
+) {
+  return [...Array(quantity)].map(() => getRandomItemFromArrayModule(list));
+}
 
 function getRandomItemFromArray(list) {
   return list[Math.floor(Math.random() * list.length)];
@@ -17,7 +25,7 @@ function getRandomItemFromArray(list) {
 function extractPokemonData(pokemonRaw) {
   return Promise.all(
     pokemonRaw.map(async (pokemon) => {
-      const pokemonData = await getPokemon(pokemon.url);
+      const pokemonData = await getPokemonByUrl(pokemon.url);
 
       return {
         name: pokemonData.name,
@@ -29,4 +37,6 @@ function extractPokemonData(pokemonRaw) {
 
 module.exports = {
   getTeam,
+  getRandomItemFromArray,
+  getRandomPokemons,
 };

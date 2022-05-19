@@ -4,7 +4,10 @@
   "description": "An API that gives you a random pokemon starter team",
   "main": "src/api.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test:watch": "jest --watchAll",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "Tests",
@@ -21,5 +24,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0",
+    "sinon": "^14.0.0"
   }
 }
