@@ -19,12 +19,12 @@ Deve retornar um array com 3 pokemóns aleatórios, contendo seus respectivos `n
 
 ### Testes
 
-- [ ] mocks
-- [ ] stubs
-- [ ] spies
-- [ ] testes end-2-end
-- [ ] testes unitários
-- [ ] 100% de code coverage
+- [x] mocks
+- [x] stubs
+- [x] spies
+- [x] testes end-2-end
+- [x] testes unitários
+- [x] 100% de code coverage
 
 ### Extras
 
@@ -86,8 +86,8 @@ URLs Úteis ao desafio:
     - [x] Deve retornar um objeto JSON conetendo um array com 3 pokemóns, cada um com seus respectivos `name (String)` e `moves (String[])`
 
 - Testes
-  - [ ] Deve ter cobertura de testes end-2-end e unitários
-  - [ ] 100% de code coverage
+  - [x] Deve ter cobertura de testes end-2-end e unitários
+  - [x] 100% de code coverage
 
 ## Submissão
 
