@@ -2,7 +2,7 @@ const {
   getTeam,
   getRandomItemFromArray,
   getRandomPokemons,
-} = require('./team');
+} = require('./teamService');
 const {
   teamRepositoryMock,
   mocks,

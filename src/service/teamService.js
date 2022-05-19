@@ -1,4 +1,7 @@
-const { getPokemonByUrl, getPokemons } = require('../repository/team');
+const {
+  getPokemonByUrl,
+  getPokemons,
+} = require('../repository/teamRepository');
 
 async function getTeam(
   teamSize = 3,

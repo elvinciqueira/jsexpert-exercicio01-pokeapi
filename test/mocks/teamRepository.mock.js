@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const { default: axios } = require('axios');
-const teamRepository = require('../../src/repository/team');
+const teamRepository = require('../../src/repository/teamRepository');
 
 const urls = {
   base: 'https://pokeapi.co/api/v2/pokemon',
@@ -27,6 +27,5 @@ fetchStub.withArgs(urls.bulbasaur).resolves({ data: mocks.bulbasaur });
 module.exports = {
   urls,
   mocks,
-  fetchStub,
   teamRepositoryMock: teamRepository,
 };
