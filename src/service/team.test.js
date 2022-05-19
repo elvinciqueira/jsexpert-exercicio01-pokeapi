@@ -1,47 +1,23 @@
-const sinon = require('sinon');
-const { default: axios } = require('axios');
 const {
   getTeam,
   getRandomItemFromArray,
   getRandomPokemons,
 } = require('./team');
-
-const pokemonsMock = require('../../test/mocks/valid-list-pokemons.json');
-
-const mock = {
-  validTeam: require('../../test/mocks/valid-team.json'),
-  charmander: require('../../test/mocks/charmander-page.json'),
-  bulbasaur: require('../../test/mocks/bulbasaur-page.json'),
-  ivysaur: require('../../test/mocks/ivysaur-page.json'),
-};
-
-const apiRoot = 'https://pokeapi.co/api/v2/pokemon';
-
-const fetchStub = sinon.stub(axios, 'get');
-
-fetchStub.withArgs(apiRoot).resolves({ data: pokemonsMock });
-pokemonsMock.results.forEach((pokemon) => {
-  fetchStub.withArgs(pokemon.url).resolves({ data: mock[pokemon.name] });
-});
+const {
+  teamRepositoryMock,
+  mocks,
+} = require('../../test/mocks/teamRepository.mock');
 
 describe('getItem', () => {
+  const teamRepository = teamRepositoryMock;
+
   it('return a pokemon team with 3 random pokemons', async () => {
-    const pokemons = pokemonsMock.results;
+    const pokemons = await teamRepository.getPokemons();
     const pokemonsRaw = [pokemons[0], pokemons[1], pokemons[2]];
     const getRandomPokemonsStub = jest.fn(() => pokemonsRaw);
 
     const team = await getTeam(3, getRandomPokemonsStub);
-    const expectedTeam = [
-      {
-        name: 'charmander',
-        moves: ['mega-punch', 'fire-punch', 'thunder-punch'],
-      },
-      { name: 'ivysaur', moves: ['swords-dance', 'cut', 'bind'] },
-      {
-        name: 'charmander',
-        moves: ['mega-punch', 'fire-punch', 'thunder-punch'],
-      },
-    ];
+    const expectedTeam = mocks.team;
 
     expect(team).toEqual(expectedTeam);
   });
@@ -57,8 +33,10 @@ describe('getRandomItemFromArray', () => {
 });
 
 describe('getRandomPokemons', () => {
-  it('return a random list of pokemons', () => {
-    const pokemons = pokemonsMock.results;
+  const teamRepository = teamRepositoryMock;
+
+  it('return a random list of pokemons', async () => {
+    const pokemons = await teamRepository.getPokemons();
     const quantity = 3;
     const getRandomPokemonsSpy = jest.fn(() =>
       getRandomItemFromArray(pokemons)

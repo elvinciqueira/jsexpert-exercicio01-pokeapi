@@ -1,13 +1,11 @@
-{
-  "team": [
-    { "name": "ivysaur", "moves": ["swords-dance", "cut", "bind"] },
-    {
-      "name": "charmander",
-      "moves": ["mega-punch", "fire-punch", "thunder-punch"]
-    },
-    {
-      "name": "charmander",
-      "moves": ["mega-punch", "fire-punch", "thunder-punch"]
-    }
-  ]
-}
+[
+  {
+    "name": "charmander",
+    "moves": ["mega-punch", "fire-punch", "thunder-punch"]
+  },
+  { "name": "ivysaur", "moves": ["swords-dance", "cut", "bind"] },
+  {
+    "name": "charmander",
+    "moves": ["mega-punch", "fire-punch", "thunder-punch"]
+  }
+]
