@@ -26,11 +26,6 @@ Deve retornar um array com 3 pokemóns aleatórios, contendo seus respectivos `n
 - [x] testes unitários
 - [x] 100% de code coverage
 
-### Extras
-
-- [ ] TDD e BDD, será que rola? Acho que vale a tentativa!
-- [ ] Que tal consumir a API sem usar libs externas? o módulo `https` do node pode ser bem interessante!
-
 ## Dicas
 
 Sinta-se livre pra desenvolver sua solução da melhor maneira possível, e caso já queira uma ajuda nos patterns e em como organizar as idéias, aqui vai:
