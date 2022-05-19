@@ -26,11 +26,7 @@ function handler(request, response) {
 function createRoute(routeKey) {
   const constrollerBy = {
     default: (request, response) => {
-      response.writeHeader(200, { 'Content-Type': 'text/html' });
-      response.write(
-        "Hey there, try /team so we can present to you your's 3 possibles choices"
-      );
-
+      response.write(JSON.stringify({ success: true }));
       return response.end();
     },
     '/team:get': async (request, response) => {

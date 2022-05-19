@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "jest": "^28.1.0",
-    "sinon": "^14.0.0"
+    "sinon": "^14.0.0",
+    "supertest": "^6.2.3"
   }
 }
